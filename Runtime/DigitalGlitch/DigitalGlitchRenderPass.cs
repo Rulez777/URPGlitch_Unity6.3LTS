@@ -82,7 +82,7 @@ namespace URPGlitch
         [System.Obsolete]
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            var cmd = CommandBufferPool.Get(passName);
+            var cmd = CommandBufferPool.Get(k_DigitalPassName);
             cmd.Clear();
 
             RTHandle source = renderingData.cameraData.renderer.cameraColorTargetHandle;
