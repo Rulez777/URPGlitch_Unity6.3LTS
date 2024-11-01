@@ -1,5 +1,6 @@
 # URPGlitch
-urp glitch originally based on mao-test-h's project (which is a port of keijiro's hdrp glitch effect)
+urp glitch originally based on mao-test-h's project https://github.com/mao-test-h/URPGlitch (which is a port of keijiro's hdrp glitch effect)
+tested on unity 6000.0.0f1 and 6000.0.23f1
 
 # steps for usage
 1.A: install using the package manager
@@ -57,7 +58,7 @@ urp glitch originally based on mao-test-h's project (which is a port of keijiro'
 - find your urp renderer asset in unity
 - click on add render feature
 - select analog/digital glitch feature
-- click on circle next to the shader field and choose the analog/digital shader. (if working with digital glitch effect choose the appropriate shader for normal and compact fields)
+- click on circle next to the shader field and choose the appropriate analog/digital shader. (click on the eye icon to see hidden shaders)
 - click on the render pass dropdown and select after rendering transparents. (for some reason selecting after or before post process in render graph mode culls the pass making it not work)
 - in your scene hierarchy (where main camera, other game objects reside) create a volume by right-clicking and selecting volume -> global volume.
 - select the newly created volume and click on new profile.
