@@ -123,7 +123,6 @@ namespace URPGlitch
         private class PassData
         {
             internal TextureHandle src;
-            internal TextureHandle dst;
         }
 
         private class TextureData
@@ -181,8 +180,6 @@ namespace URPGlitch
             using (IRasterRenderGraphBuilder builder = renderGraph.AddRasterRenderPass(k_DigitalPassName + "1", out PassData passData, profilingSampler))
             {
                 passData.src = src;
-                passData.dst = mainFrame;
-
                 builder.UseTexture(src);
                 builder.SetRenderAttachment(mainFrame, 0);
                 builder.SetRenderFunc((PassData data, RasterGraphContext context) => ExecutePass(data, context));
@@ -193,8 +190,6 @@ namespace URPGlitch
                 using (IRasterRenderGraphBuilder builder = renderGraph.AddRasterRenderPass(k_DigitalPassName + "2", out PassData passData, profilingSampler))
                 {
                     passData.src = src;
-                    passData.dst = trashFrame1;
-
                     builder.UseTexture(src);
                     builder.SetRenderAttachment(trashFrame1, 0);
                     builder.SetRenderFunc((PassData data, RasterGraphContext context) => ExecutePass(data, context));
@@ -205,8 +200,6 @@ namespace URPGlitch
                 using (IRasterRenderGraphBuilder builder = renderGraph.AddRasterRenderPass(k_DigitalPassName + "3", out PassData passData, profilingSampler))
                 {
                     passData.src = src;
-                    passData.dst = trashFrame2;
-
                     builder.UseTexture(src);
                     builder.SetRenderAttachment(trashFrame2, 0);
                     builder.SetRenderFunc((PassData data, RasterGraphContext context) => ExecutePass(data, context));

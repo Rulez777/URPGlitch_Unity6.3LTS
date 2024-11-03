@@ -94,7 +94,6 @@ namespace URPGlitch
         private class PassData
         {
             internal TextureHandle source;
-            internal TextureHandle destination;
             internal Material material;
         }
         private static void ExecutePass(PassData data, RasterGraphContext context, int pass)
@@ -123,7 +122,6 @@ namespace URPGlitch
             using (IRasterRenderGraphBuilder builder = renderGraph.AddRasterRenderPass(k_AnalogPassName, out PassData passData, profilingSampler))
             {
                 passData.source = src;
-                passData.destination = dst;
                 passData.material = analogGlitchMat;
 
                 builder.UseTexture(src);
