@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.RenderGraphModule;
 using UnityEngine.Rendering.Universal;
@@ -82,6 +83,14 @@ namespace URPGlitch
         [System.Obsolete]
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            var isPostProcessEnabled = renderingData.cameraData.postProcessEnabled;
+            var isSceneViewCamera = renderingData.cameraData.isSceneViewCamera;
+
+            if (!isPostProcessEnabled || isSceneViewCamera)
+            {
+                return;
+            }
+
             var cmd = CommandBufferPool.Get(k_DigitalPassName);
             cmd.Clear();
 
@@ -152,6 +161,13 @@ namespace URPGlitch
         {
             UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
 
+            var isPostProcessEnabled = frameData.Get<UniversalCameraData>().postProcessEnabled;
+            var isSceneViewCamera = frameData.Get<UniversalCameraData>().isSceneViewCamera;
+            if (!isPostProcessEnabled || isSceneViewCamera)
+            {
+                return;
+            }
+
             if (resourceData.isActiveTargetBackBuffer)
             {
                 Debug.LogError($"Skipping render pass. BlitAndSwapColorRendererFeature requires an intermediate ColorTexture, we can't use the BackBuffer as a texture input.");
@@ -166,12 +182,13 @@ namespace URPGlitch
             }
 
 
-            var src = resourceData.activeColorTexture;
-            var destinationDesc = renderGraph.GetTextureDesc(src);
+            TextureHandle src = resourceData.activeColorTexture;
+            TextureDesc destinationDesc = renderGraph.GetTextureDesc(src);
             destinationDesc.name = $"CameraColor-{k_DigitalPassName}";
             destinationDesc.clearBuffer = false;
 
-            var renderTexDesc = frameData.Get<UniversalCameraData>().cameraTargetDescriptor;
+            RenderTextureDescriptor renderTexDesc = frameData.Get<UniversalCameraData>().cameraTargetDescriptor;
+            renderTexDesc.depthBufferBits = 0;
 
             TextureHandle mainFrame = UniversalRenderer.CreateRenderGraphTexture(renderGraph, renderTexDesc, "_MainFrame", false);
             TextureHandle trashFrame1 = UniversalRenderer.CreateRenderGraphTexture(renderGraph, renderTexDesc, "_TrashFrame1", false);

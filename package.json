@@ -1,7 +1,7 @@
 {
     "name": "com.subbu.urp-glitch",
     "description": "Glitch effect with URP for unity 6, both render graph and compatibilty mode.",
-    "version": "1.0.0",
+    "version": "2.0.1",
     "unity": "6000.0",
     "displayName": "URPGlitch",
     "dependencies": {

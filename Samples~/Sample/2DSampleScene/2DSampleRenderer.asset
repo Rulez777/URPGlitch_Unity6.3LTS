@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11145981673336645838492a2d98e247, type: 3}
-  m_Name: SampleRenderer
+  m_Name: 2DSampleRenderer
   m_EditorClassIdentifier: 
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Name: DigitalGlitchFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  shader: {fileID: 4800000, guid: f543b3af2e0e5044caa979485a566d18, type: 3}
-  compatShader: {fileID: 4800000, guid: 84a007295cb8f2f45b32143c1b96398d, type: 3}
+  shader: {fileID: 4800000, guid: f445ed039be4e2c4c81930580ce0fa68, type: 3}
+  compatShader: {fileID: 4800000, guid: 2f7db6c094d160148aa3595fd806f507, type: 3}
   renderPassEvent: 500
 --- !u!114 &6440832652464174910
 MonoBehaviour:
@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Name: AnalogGlitchRenderFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  anaglogGlitchShader: {fileID: 4800000, guid: 14ed40614124a6449ba55a034441e698, type: 3}
+  anaglogGlitchShader: {fileID: 4800000, guid: 97d9be06c8e6c1e4781abe10d57474a8, type: 3}
   renderPassEvent: 500

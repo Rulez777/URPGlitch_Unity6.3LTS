@@ -65,6 +65,14 @@ namespace URPGlitch
         [System.Obsolete]
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            var isPostProcessEnabled = renderingData.cameraData.postProcessEnabled;
+            var isSceneViewCamera = renderingData.cameraData.isSceneViewCamera;
+
+            if (!isPostProcessEnabled || isSceneViewCamera)
+            {
+                return;
+            }
+
             CommandBuffer cmd = CommandBufferPool.Get();
 
             RTHandle source = renderingData.cameraData.renderer.cameraColorTargetHandle;
@@ -104,6 +112,13 @@ namespace URPGlitch
         ContextContainer frameData)
         {
             UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
+
+            var isPostProcessEnabled = frameData.Get<UniversalCameraData>().postProcessEnabled;
+            var isSceneViewCamera = frameData.Get<UniversalCameraData>().isSceneViewCamera;
+            if (!isPostProcessEnabled || isSceneViewCamera)
+            {
+                return;
+            }
 
             if (resourceData.isActiveTargetBackBuffer)
             {
