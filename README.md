@@ -1,24 +1,28 @@
-# URPGlitch
-urp glitch originally based on mao-test-h's project https://github.com/mao-test-h/URPGlitch (which is a port of keijiro's hdrp glitch effect)
-tested on unity 6000.0.0f1 and 6000.0.23f1
+# URP Glitch Effect
+**URP Glitch** is a glitch effect for the Universal Render Pipeline (URP), originally based on [mao-test-h's project](https://github.com/mao-test-h/URPGlitch), which in turn was inspired by [keijiro's HDRP Glitch effect](https://github.com/keijiro/KinoGlitch). This effect has been tested on Unity versions `6000.0.0f1` and `6000.0.23f1`.
 
-# steps for usage
-1.A: install using the package manager
-- open package manager by clicking on window -> package manager.
-- click on the plus icon on the top left of the package manager window.
-- select "install package from git URL..."
-- in the text field that appears paste this URL: https://github.com/saimarei/URPGlitch.git
-- click install
-      
-1.B: install using modifying the "manifest.json" file
-- open your project's folder location in your file explorer (if you are inside unity you can right click and select "show in explorer")
-- open the packages folder and open the "manifest.json" file
-- Add the following line to the `"dependencies"` section:
-    ```json
-    "com.subbu.urp-glitch": "https://github.com/saimarei/URPGlitch.git",
-    ```
-4. You can place it:
-   - **After the opening brace** (`{`) of `"dependencies"`, as shown below:
+---
+
+## Installation Instructions
+
+### Option 1: Install via Package Manager
+1. Open **Package Manager** in Unity (Window → Package Manager).
+2. Click the **+** icon in the top-left corner.
+3. Select **Install package from Git URL...**
+4. Paste the following URL and click **Install**:
+   ```
+   https://github.com/saimarei/URPGlitch.git
+   ```
+
+### Option 2: Modify `manifest.json`
+1. Navigate to your project folder in the file explorer.
+2. Open the `Packages` folder and locate the `manifest.json` file.
+3. Add this line in the `"dependencies"` section:
+   ```json
+   "com.subbu.urp-glitch": "https://github.com/saimarei/URPGlitch.git",
+   ```
+   You can place it:
+   - **At the beginning of `"dependencies"`**:
      ```json
      {
        "dependencies": {
@@ -28,7 +32,7 @@ tested on unity 6000.0.0f1 and 6000.0.23f1
        }
      }
      ```
-   - **After any of the other dependencies**, with a comma following the previous entry:
+   - **After any other dependency** (with a comma after the previous entry):
      ```json
      {
        "dependencies": {
@@ -38,7 +42,7 @@ tested on unity 6000.0.0f1 and 6000.0.23f1
        }
      }
      ```
-   - **At the end of the dependencies list** (without a comma after it):
+   - **At the end of the dependencies list** (without a comma afterward):
      ```json
      {
        "dependencies": {
@@ -48,29 +52,43 @@ tested on unity 6000.0.0f1 and 6000.0.23f1
        }
      }
      ```
-  
-1.C: install a local package
-- first download your relevant package from the releases section of the GitHub page.
-- in unity right click and select import package -> custom package.
-- select the files you deem necessary, if you are a beginner I recommend getting all the files.
 
-2. setup
-- find your urp renderer asset in unity
-- click on add render feature
-- select analog/digital glitch feature
-- click on circle next to the shader field and choose the appropriate analog/digital shader. (click on the eye icon to see hidden shaders)
-- click on the render pass dropdown and select after rendering transparents. (for some reason selecting after or before post process in render graph mode culls the pass making it not work)
-- in your scene hierarchy (where main camera, other game objects reside) create a volume by right-clicking and selecting volume -> global volume.
-- select the newly created volume and click on new profile.
-- after creating a new profile click on add override and select the analog/glitch volume.
-- now turn on post-processing in your main camera and everything should work.
+### Option 3: Install from Local Package
+1. Download the package from the **Releases** section of the GitHub page.
+2. In Unity, right-click and select **Import Package → Custom Package**.
+3. Choose the downloaded package file. Beginners may want to import all files.
 
-3. Sample Scene Setup
-- after downloading the sample scene, find the urp asset file
-- in the Renderer List click on the plus icon
-- click on the circle next to the empty field and select the sample renderer.
-- things should work now.
-- the settings object in the scene has the script attached for the two buttons which show you how to use a script to control the effects.
+---
 
-# License
-- [keijiro/KinoGlitch](https://github.com/keijiro/KinoGlitch)
+## Setup Instructions
+
+1. **Add Glitch Render Feature**:
+   - Locate your URP renderer asset in Unity.
+   - Click **Add Render Feature**.
+   - Choose the **Analog/Digital Glitch Feature**.
+   - Set the **Shader** field by selecting an appropriate shader (click the eye icon to reveal hidden shaders).
+   - In the **Render Pass** dropdown, choose **After Rendering Transparents**.
+
+2. **Configure Global Volume**:
+   - In the Scene Hierarchy, create a volume: **Right-click → Volume → Global Volume**.
+   - Select the volume and create a **New Profile**.
+   - Add an override and select the **Analog/Glitch Volume**.
+   - Ensure **Post-Processing** is enabled on the main camera to apply the effect.
+
+---
+
+## Sample Scene Setup
+
+1. Download and open the **Sample Scene**.
+2. Find the URP asset file in the project.
+3. In the **Renderer List**, click the **+** icon.
+4. Assign the **2D Sample Renderer** or **Sample Universal Renderer**.
+5. The effect should now be active. 
+
+> The settings object in the sample scene includes a script that demonstrates how to use buttons to control the effects programmatically.
+
+---
+
+## License
+
+This project is released under the same license as [keijiro/KinoGlitch](https://github.com/keijiro/KinoGlitch).
