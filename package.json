@@ -19,7 +19,7 @@
     {
       "displayName": "URP Glitch sample",
       "description": "a simple scene to show how you can control the glitch effect with a script",
-      "path": "Samples~/SampleScene"
+      "path": "Samples~/SampleScenes"
     }
   ]
   } 
