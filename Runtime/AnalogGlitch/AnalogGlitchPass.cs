@@ -22,7 +22,8 @@ namespace URPGlitch
 
         public AnalogGlitchPass(Shader shader)
         {
-            analogGlitchMat = CoreUtils.CreateEngineMaterial(shader);
+            if (shader != null) analogGlitchMat = CoreUtils.CreateEngineMaterial(shader);
+
             textureDescriptor = new RenderTextureDescriptor(Screen.width, Screen.height, RenderTextureFormat.Default, 0);
             requiresIntermediateTexture = true;
         }

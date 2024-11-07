@@ -32,8 +32,8 @@ namespace URPGlitch
 
         public DigitalGlitchRenderPass(Shader shader, Shader compatShader)
         {
-            material = CoreUtils.CreateEngineMaterial(shader);
-            CompatMaterial = CoreUtils.CreateEngineMaterial(compatShader);
+            if (shader != null) material = CoreUtils.CreateEngineMaterial(shader);
+            if (compatShader != null) CompatMaterial = CoreUtils.CreateEngineMaterial(compatShader);
             requiresIntermediateTexture = true;
 
             textureDescriptor = new RenderTextureDescriptor(Screen.width, Screen.height, RenderTextureFormat.Default, 0);
