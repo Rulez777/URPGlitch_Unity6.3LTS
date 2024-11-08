@@ -4,6 +4,7 @@
 [digital.webm](https://github.com/user-attachments/assets/18246342-0e59-4b7b-8d63-27207f5277b7)
 [analog.webm](https://github.com/user-attachments/assets/d5fa80ed-0953-4f5d-8854-a1351919c928)
 
+Tutorial - https://youtu.be/JFDuHaWDUvo
 ---
 
 ## Installation Instructions
