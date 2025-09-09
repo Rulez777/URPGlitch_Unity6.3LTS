@@ -30,7 +30,12 @@ namespace URPGlitch
 
         private void UpdateSettings()
         {
-            if (analogGlitchMat == null) { Debug.LogError("update settings material null"); return; }
+            if (analogGlitchMat == null)
+            {
+                Debug.LogError("update settings material null");
+                return;
+            }
+
             var _volume = VolumeManager.instance.stack.GetComponent<AnalogGlitchVolume>();
 
             var scanLineJitter = _volume.scanLineJitter.value;
@@ -38,19 +43,52 @@ namespace URPGlitch
             var horizontalShake = _volume.horizontalShake.value;
             var colorDrift = _volume.colorDrift.value;
 
-            _verticalJumpTime += Time.deltaTime * verticalJump * 11.3f;
+            //Scanline Jitter
+            if (scanLineJitter > 0f)
+            {
+                var slThresh = Mathf.Clamp01(1.0f - scanLineJitter * 1.2f);
+                var slDisp = 0.002f + Mathf.Pow(scanLineJitter, 3) * 0.05f;
+                analogGlitchMat.SetVector(ScanLineJitterID, new Vector2(slDisp, slThresh));
+            }
+            else
+            {
+                analogGlitchMat.SetVector(ScanLineJitterID, Vector2.zero);
+            }
 
-            var slThresh = Mathf.Clamp01(1.0f - scanLineJitter * 1.2f);
-            var slDisp = scanLineJitter <= 0.0001f ? 0f : 0.002f + Mathf.Pow(scanLineJitter, 3) * 0.05f;
-            analogGlitchMat.SetVector(ScanLineJitterID, new Vector2(slDisp, slThresh));
+            //Vertical Jump
+            if (verticalJump > 0f)
+            {
+                _verticalJumpTime += Time.deltaTime * verticalJump * 11.3f;
+                var vj = new Vector2(verticalJump, _verticalJumpTime);
+                analogGlitchMat.SetVector(VerticalJumpID, vj);
+            }
+            else
+            {
+                analogGlitchMat.SetVector(VerticalJumpID, Vector2.zero);
+            }
 
-            var vj = new Vector2(verticalJump, _verticalJumpTime);
-            analogGlitchMat.SetVector(VerticalJumpID, vj);
-            analogGlitchMat.SetFloat(HorizontalShakeID, horizontalShake * 0.2f);
+            //Horizontal Shake
+            if (horizontalShake > 0f)
+            {
+                analogGlitchMat.SetFloat(HorizontalShakeID, horizontalShake * 0.2f);
+            }
+            else
+            {
+                analogGlitchMat.SetFloat(HorizontalShakeID, 0f);
+            }
 
-            var cd = new Vector2(colorDrift * 0.04f, Time.time * 606.11f);
-            analogGlitchMat.SetVector(ColorDriftID, cd);
+            //Color Drift
+            if (colorDrift > 0f)
+            {
+                var cd = new Vector2(colorDrift * 0.04f, Time.time * 606.11f);
+                analogGlitchMat.SetVector(ColorDriftID, cd);
+            }
+            else
+            {
+                analogGlitchMat.SetVector(ColorDriftID, Vector2.zero);
+            }
         }
+
 
         #region Non-render graph code
 
