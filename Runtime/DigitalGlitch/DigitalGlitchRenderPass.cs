@@ -75,8 +75,6 @@ namespace URPGlitch
             textureDescriptor.width = cameraTextureDescriptor.width;
             textureDescriptor.height = cameraTextureDescriptor.height;
 
-            textureDescriptor.vrUsage = cameraTextureDescriptor.vrUsage;
-
             RenderingUtils.ReAllocateIfNeeded(ref _mainFrame, textureDescriptor);
             RenderingUtils.ReAllocateIfNeeded(ref _trashFrame1, textureDescriptor);
             RenderingUtils.ReAllocateIfNeeded(ref _trashFrame2, textureDescriptor);
