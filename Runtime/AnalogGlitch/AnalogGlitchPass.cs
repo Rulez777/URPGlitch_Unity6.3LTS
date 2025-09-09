@@ -41,7 +41,7 @@ namespace URPGlitch
             _verticalJumpTime += Time.deltaTime * verticalJump * 11.3f;
 
             var slThresh = Mathf.Clamp01(1.0f - scanLineJitter * 1.2f);
-            var slDisp = 0.002f + Mathf.Pow(scanLineJitter, 3) * 0.05f;
+            var slDisp = scanLineJitter <= 0.0001f ? 0f : 0.002f + Mathf.Pow(scanLineJitter, 3) * 0.05f;
             analogGlitchMat.SetVector(ScanLineJitterID, new Vector2(slDisp, slThresh));
 
             var vj = new Vector2(verticalJump, _verticalJumpTime);
