@@ -1,5 +1,5 @@
 
-# URP Glitch Effect
+# URP Glitch Effect ported to Unity 6.3 LTS URP 17+
 **URP Glitch** is a glitch effect for the Universal Render Pipeline (URP), originally based on [mao-test-h's project](https://github.com/mao-test-h/URPGlitch), which in turn was inspired by [keijiro's HDRP Glitch effect](https://github.com/keijiro/KinoGlitch). 
 ---
 
