@@ -1,6 +1,4 @@
-﻿// refered to:
-//     https://github.com/keijiro/KinoGlitch.git
-//     Assets/Kino/Glitch/Shader/DigitalGlitch.shader
+ 
 Shader "URPGlitch/Digital"
 {
     SubShader
